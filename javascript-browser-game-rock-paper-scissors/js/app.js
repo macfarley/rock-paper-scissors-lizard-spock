@@ -16,17 +16,22 @@
 //the css reacts on a click
 
 /*------------------------ Cached Element References ------------------------*/
-const resultDisplayEl = document.querySelector('#result-display');
-const winDisplayEl = document.querySelector('#wins-display');
+const resultDisplay = document.querySelector('#result-display');
+const winDisplay = document.querySelector('#wins-display');
 
 /*-------------------------------- Variables --------------------------------*/
-const choices = ['rock', 'paper', 'scissors', 'lizard', 'Spock']
+const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 let playerChoice;
 let computerChoice; 
 let msg = "";
 let computerWins = 0;
 let playerWins = 0;
 let tieGame = 0;
+let rockWins = 0;
+let paperWins = 0;
+let scissorsWins = 0;
+let lizardWins = 0;
+let spockWins = 0;
 /*----------------------------- Event Listeners -----------------------------*/
 
 // document.querySelector('#rock').addEventListener('click', play);
@@ -66,112 +71,152 @@ const getPlayerChoice = (event) => {
 //   };
 
 const compare = () => {
-    if (playerChoice === computerChoice) {
-        msg = 'You both suck!';
-        tieGame = tieGame+1;}
-    //rock vs scissors
-    if(playerChoice === "rock"){
-        if(computerChoice === "scissors"){
-            msg = "Rock crushes scissors! You win";
-            playerWins = playerWins +1}        
-    //rock vs paper
-         else if(computerChoice === "paper"){
+    if(playerChoice == "rock"){
+        //rock vs rock
+        if(computerChoice == "rock"){
+            msg = "You both suck!";
+            tieGame = tieGame +1;
+        }        
+        //rock vs scissors
+        if(computerChoice == "scissors"){
+            msg = "Rock crushes scissors! You win." ;
+            playerWins = playerWins +1;
+        }
+    
+        //rock vs paper
+        if(computerChoice == "paper"){
             msg = "Paper covers rock!  You lose."; 
-            computerWins = computerWins +1} 
-     //rock vs lizard
-        else if(computerChoice === "lizard"){
+            computerWins = computerWins +1;
+        } 
+        //rock vs lizard
+        if(computerChoice == "lizard"){
             msg = "Rock crushes lizard!  You win.";
-            playerWins = playerWins +1}
-    //rock vs Spock
-         else if(computerChoice === "Spock"){
+            playerWins = playerWins +1;
+        }
+        //rock vs Spock
+        if(computerChoice == "spock"){
             msg = "Spock vaporizes rock!  You lose."; 
-        computerWins = computerWins +1} 
-    }
-
-    if(playerChoice === "paper"){
+        computerWins = computerWins +1;
+        } 
+    }//end rock   
+    
+    if(playerChoice == "paper"){
         //paper vs rock
-        if(computerChoice === "rock"){
-            msg = "Paper covers rock! You win.";
-            playerWins = playerWins +1}
-       //paper vs scissors
-        else if(computerChoice === "scissors"){
-            msg = "Scissors cut paper!  You lose.";
-            computerWins = computerWins +1}
+        if(computerChoice == "rock"){
+            msg = "Paper covers rock, you win!";
+            playerWins= playerWins +1;
+        }        
+        //paper vs scissors
+        if(computerChoice == "scissors"){
+            msg = "Scissors cut paper, you lose." ;
+            computerWins = computerWins +1;
+        }
+        //paper vs paper
+        if(computerChoice == "paper"){
+            msg = "it's a Draw, you both suck!"; 
+            tieGame = tieGame +1;
+        } 
         //paper vs lizard
-        else if(computerChoice === "lizard"){
-            msg = "Lizard eats paper!  You lose.";
-            computerWins = computerWins +1} 
-            //paper vs Spock
-        else if(computerChoice === "Spock"){
-            msg = "Paper disproves Spock!  You win.";
-            playerWins = playerWins +1}  
-    }
-    if(playerChoice === "scissors"){
-       //scissors vs paper
-        if(computerChoice === "paper"){
-            msg = "Scissors cut paper!  You win.";
-            playerWins = playerWins +1}
+        if(computerChoice == "lizard"){
+            msg = "Lizard eats paper, you lose.";
+            computerWins = computerWins +1;
+        }
+        //paper vs Spock
+        if(computerChoice == "spock"){
+            msg = "Paper disproves Spock, you win!"; 
+        playerWins = playerWins +1;
+        } 
+    } //end of paper
+    if(playerChoice == "scissors"){
         //scissors vs rock
-        else if(computerChoice === "rock"){ 
-            msg = "Rock crushes scissors!  You lose."; 
-            computerWins = computerWins +1}
-         //scissors vs lizard
-        else if(computerChoice === "lizard"){ 
-            msg = "Scissors decaptiate Lizard!  You win."; 
-            playerWins = playerWins +1}
-         //scissors vs Spock
-        else if(computerChoice === "Spock"){ 
-            msg = "Spock breaks scissors!  You lose."; 
-            computerWins = computerWins +1}
-    }
-    if(playerChoice === "lizard"){
+        if(computerChoice == "rock"){
+            msg = "Rock crushes scissors, you lose";
+            computerWins = computerWins +1;
+        }        
+        //scissors vs scissors
+        if(computerChoice == "scissors"){
+            msg = "Tie game, you both suck." ;
+            tieGame = tieGame +1;
+        }
+    
+    //scissors vs paper
+        if(computerChoice == "paper"){
+            msg = "Scissors cut paper, you win!"; 
+            playerWins = playerWins +1;
+        } 
+     //scissors vs lizard
+        if(computerChoice == "lizard"){
+            msg = "Scissors decapitate Lizard, you win!";
+            playerWins = playerWins +1 ;
+        }
+    //scissors vs Spock
+        if(computerChoice == "spock"){
+            msg = "Spock breaks scissors, you lose."; 
+        computerWins = computerWins +1;
+        } 
+    } //end of scissors
+    if(playerChoice == "lizard"){
+        //scissors vs rock
+        if(computerChoice == "rock"){
+            msg = "Rock smashes Lizard, you lose";
+            computerWins = computerWins +1;
+        }        
+        //lizard vs scissors
+        if(computerChoice == "scissors"){
+            msg = "Scissors decapitate Lizard, you lose." ;
+            computerWins = computerWins +1;
+        }
         //lizard vs paper
-        if(computerChoice === "paper"){
-             msg = "Lizard eats paper!  You win.";
-             playerWins = playerWins +1}
-        //lizard vs rock
-        else if(computerChoice === "lizard"){ 
-             msg = "Rock crushes lizard!  You lose."; 
-             computerWins = computerWins +1}
-         //lizard vs scissors
-        else if(computerChoice === "scissors"){ 
-             msg = "Scissors decaptiate Lizard!  You lose."; 
-             computerWins = computerWins +1
-            }
-        //lizard vs Spock 
-        else if(computerChoice === "Spock"){ 
-             msg = "Lizard poisons Spock!  You win."; 
-             playerWins = playerWins +1 
-            }
-     }
-     if(playerChoice === "Spock"){
-       //lizard vs Spock 
-       if(computerChoice === "lizard"){ 
-        msg = "Lizard poisons Spock! You lose."; 
-       computerWins = computerWins+1
-       }
-        //Spock vs paper
-        else if(computerChoice === "paper"){ 
-             msg = "Paper disproves Spock! You Lose."; 
-             computerWins = computerWins +1}
-        //Spock vs scissors
-        else if(computerChoice === "scissors"){ 
-             msg = "Spock breaks scissors! You win"; 
-             playerWins = playerWins +1
-            }
-        //Spock vs rock
-        else if(computerChoice === "rock"){
-            msg = "Spock vaporizes rock! You win.";
-            playerWins = playerWins +1}
-     }
-}
-
+        if(computerChoice == "paper"){
+            msg = "Lizard eats paper, you win!"; 
+            playerWins = playerWins +1;
+        } 
+        //lizard vs lizard
+        if(computerChoice == "lizard"){
+            msg = "Tie game, you both suck.";
+            tieGame = tieGame +1;
+        }
+        //lizard vs Spock
+        if(computerChoice == "spock"){
+            msg = "Lizard poisons Spock, you win!"; 
+            playerWins = playerWins +1;
+        } 
+    } //end of lizard
+    if(playerChoice == "spock"){
+        //spock vs rock
+        if(computerChoice == "rock"){
+            msg = "Spock vaporizes rock, you win!";
+            playerWins = playerWins +1;
+        }        
+        //spock vs scissors
+        if(computerChoice == "scissors"){
+            msg = "Spock breaks scissors, you win!" ;
+            playerWins = playerWins +1;
+        }
+        //spock vs paper
+        if(computerChoice == "paper"){
+            msg = "Paper disproves Spock, you lose."; 
+            computerWins = computerWins +1;
+        } 
+        //spock vs lizard
+        if(computerChoice == "lizard"){
+            msg = "Lizard poisons Spock, you lose.";
+            computerWins = computerWins+1;
+        }
+        //Spock vs Spock
+        if(computerChoice == "spock"){
+            msg = "Evil twin, parallel universe, nerdy porn? We all lose." ; 
+        tieGame = tieGame +1;
+        } 
+    }  //end of Spock
+} //end of compare function
 // As a user, I want to see the computer’s choice displayed 
 // next to mine, so I can compare the two.
 
 function render(){
-    resultDisplayEl.textContent = `You chose ${playerChoice} and the Q Continuum chose ${computerChoice}.  ${msg}`;
-    winDisplayEl.textContent = `Current Record: ${playerWins} Wins, ${computerWins} Losses, and ${tieGame} Draws.`
+    console.log(msg)
+    resultDisplay.textContent = `You chose ${playerChoice} and the Q Continuum chose ${computerChoice}. ${msg} `;
+    winDisplay.innerHTML = "Current Record: " + playerWins + " Wins, " + computerWins + " Losses, and " + tieGame + " Draws."
 }
 // As a user, I want to be presented with a clear message 
 // indicating the winner of the game, so that I can 
